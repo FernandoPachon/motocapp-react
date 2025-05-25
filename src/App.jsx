@@ -7,7 +7,7 @@ import PopupGoogle from './PopupGoogle';
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/Register' element={<Register/>}/>

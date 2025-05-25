@@ -4,7 +4,9 @@ import "./App.css";
 import PopupGoogle from './PopupGoogle';
 
 const Login = () => {
-
+  const btnEvent=()=>{
+    alert("Esta funcion esta desabilitada, ingresa con google")
+  }
   const handleGoogleSuccess = (data) => {
     console.log("Usuario autenticado:", data.user.displayName);
     sessionStorage.setItem('user', JSON.stringify(data.user));
@@ -19,7 +21,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="main-container">
+      <div className="main-container--login">
         <div className="container-logo">
           <img src="src/assets/LogoMotocarro.png" alt="" width="80%" />
         </div>
@@ -31,23 +33,20 @@ const Login = () => {
               onError={handleGoogleError}
             />
           </div>
-          <div className="separator">o</div>
-          <div>
+          <div className='container-input'>
             <form action="" className="input-form--container">
               <label >
-                Correo:
-                <input type="email" id="input-login" />
+                <input type="email" id="input-login" placeholder='Ingresa un correo' />
               </label>
               <label >
-                Contraseña:
-                <input type="password" id="input-login" />
+                <input type="password" id="input-login" placeholder='Ingresa la contraseña'/>
               </label>
               <label >
                 <input type="checkbox" id="checkbox" />
                 Recordarme
                 <a href=""> ¿Olvidaste tu contraseña?</a>
               </label>
-              <button id="button">Conectarse</button>
+              <button id="button" onClick={btnEvent}>Conectarse</button>
               <label htmlFor="">
                 ¿No tienes cuenta?
                 <Link to="/Register">Registrarse</Link>
@@ -56,7 +55,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-
+<p>Creado por Fernando Pachon</p>
     </>
   )
 }

@@ -144,25 +144,32 @@ const MapaGoogle = () => {
   };
 
   return (
-    <div className="map-container">
-      <div ref={mapRef} id="cliente-map"  />
-      
-      <div className="controls">
-        <input
-          ref={origenRef}
-          type="text"
-          placeholder="Origen"
-          id="origen"
-        />
-        <input
-          ref={destinoRef}
-          type="text"
-          placeholder="Destino"
-          id="destino"
-        />
-        <button onClick={calcularRuta}>Calcular Ruta</button>
+    <div className='main-map'>
+
+      <div className="map-container">
+        <div ref={mapRef} id="cliente-map" />
+
+        <div className="controls">
+          <input
+            ref={origenRef}
+            type="text"
+            placeholder="Origen"
+            id="origen"
+            className='inputMap'
+          />
+          <input
+            ref={destinoRef}
+            type="text"
+            placeholder="Destino"
+            id="destino"
+            className='inputMap'
+          />
+          <button onClick={calcularRuta}>Calcular Ruta</button>
+        </div>
       </div>
     </div>
+
+
   );
 };
 

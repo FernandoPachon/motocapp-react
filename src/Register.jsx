@@ -1,8 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "./App.css";
+import PopupGoogle from './PopupGoogle';
 
 const Register = () => {
+
+    const handleGoogleSuccess = (data) => {
+        console.log("Usuario autenticado:", data.user.displayName);
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        navigate("/dashboard");
+    };
+
+    const handleGoogleError = (error) => {
+        console.error("Error en autenticación:", error.message);
+        alert(`Error al iniciar sesión: ${error.message}`);
+    };
+
     return (
         <>
             <div className="main-container">
@@ -11,7 +24,12 @@ const Register = () => {
                 </div>
                 <div className="container-form">
                     <h2 id="h2">Crear cuenta</h2>
-
+                    <div className="social-buttons">
+                        <PopupGoogle
+                            onSuccess={handleGoogleSuccess}
+                            onError={handleGoogleError}
+                        />
+                    </div>
                     <div>
                         <form action="" className="input-form--container">
                             <label htmlFor="">
@@ -32,6 +50,7 @@ const Register = () => {
                                 <a href=""> terminos y condiciones</a>
                             </label>
                             <button id="button">Registrarse</button>
+
                             <label htmlFor="">
                                 ¿Ya estas registrado?
                                 <Link to="/login">Ingresa</Link>

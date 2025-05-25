@@ -23,26 +23,29 @@ const dashboard = () => {
                 <div className='info-container'>
                     {userData && (
                         <div className='info-user'>
-                            <p>Bienvenido {userData.displayName}</p>
-                            <img
+
+                            <div><img
                                 src={userData.photoURL}
                                 alt="Foto de perfil"
                                 width="100"
                                 style={{ borderRadius: "50%" }}
-                            />
-                            <button
-                                onClick={handleOnClick}
-                                className="logout-btn"
-                            >
-                                Cerrar sesión
-                            </button>
+                            /></div>
+                            <div><p>Bienvenido {userData.displayName}</p>
+
+                                <button
+                                    onClick={handleOnClick}
+                                    className="logout-btn"
+                                >
+                                    Cerrar sesión
+                                </button></div>
                         </div>
+
                     )}
                 </div>
 
                 <div className="content-wrapper">
                     <div className="map-container">
-                        <div id="cliente-map" className="cliente-map">
+                        <div >
                             <MapaGoogle />
                         </div>
                     </div>
@@ -61,6 +64,7 @@ const dashboard = () => {
                     </div>
                 </div>
             </div>
+            <p>Creado por Fernando Pachon</p>
         </>
     )
 }

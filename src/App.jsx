@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import React from 'react'; // ¡Esta línea debe estar presente!
 import Login from './login';
 import Register from './Register';
 import Dashboard from './dashboard';
@@ -7,8 +8,9 @@ import PopupGoogle from './PopupGoogle';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Routes>
+         <Route path="/" element={<Login />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>

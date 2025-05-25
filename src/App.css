@@ -100,3 +100,10 @@ label{
 #checkbox{
   background-color: #2b5da8;;
 }
+.info-container{
+  font-weight: bold;
+  display: flex;
+  height: auto;
+  width: 100%;
+  color: black;
+}

@@ -34,6 +34,12 @@ const Login = () => {
         // IdP data available using getAdditionalUserInfo(result)
         // ...
         console.log("nombre",result.user.displayName);
+        sessionStorage.setItem('user', JSON.stringify({
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid
+        }));
         navigate("/dashboard")
       }).catch((error) => {
         // Handle Errors here.

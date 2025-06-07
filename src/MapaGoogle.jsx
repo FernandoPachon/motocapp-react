@@ -148,8 +148,9 @@ const MapaGoogle = () => {
 
       <div className="map-container">
         <div ref={mapRef} id="cliente-map" />
-
+        
         <div className="controls">
+          <p id='title-map'>A donde necesitas tu MotoCapp</p>
           <input
             ref={origenRef}
             type="text"

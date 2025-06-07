@@ -1,7 +1,9 @@
 body {
-  background-color: #888;
+  background-color: #dc7633;
   display: flex;
   justify-content: center;
+  background-image: url("./assets/fondo1.png");
+  background-size: contain;
 }
 
 #root {
@@ -65,6 +67,7 @@ body {
   background-color: #3367d6;
 }
 
+
 .main-container {
   background-color: white;
   border-radius: 2%;
@@ -73,9 +76,9 @@ body {
   justify-content: center;
   border-color: #2b5da8;
   height: 100%;
-  margin: 1vh;
-  width: 50vw;
-  padding: 2vh;
+  margin: 2vw;
+  width: 90vw;
+  padding: 3vh;
 }
 
 .main-container--login {
@@ -88,14 +91,17 @@ body {
   width: 50vw;
   padding: 2vh;
 }
-.main-register{
+
+.main-register {
   display: flex;
   flex-direction: row;
 }
-.container-input{
+
+.container-input {
   display: flex;
   justify-content: center;
 }
+
 .container-form {
   display: flex;
   flex-direction: column;
@@ -141,16 +147,48 @@ label {
 .info-container {
   font-weight: bold;
   display: flex;
+  justify-content: flex-end;
   height: auto;
-  width: 70%;
+  width: 100%;
   color: black;
+  margin: auto;
+}
+
+#info-user--name {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  gap: 2px;
+  padding: auto;
+  width: 200vw;
+  align-items: center;
+}
+
+.button-info {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
 }
 
 .info-user {
   display: flex;
-  flex-direction: row ;
-  align-items:flex-start;
+  flex-direction: row;
+  align-items: flex-start;
   gap: 10px;
+  width: 50%;
+}
+
+#options {
+  width: 33%;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+#options:hover {
+  width: 33%;
+  background-color: #3498db;
+  color: black;
+  font-weight: bold;
 }
 
 .content-wrapper {
@@ -168,7 +206,18 @@ label {
 .map-container {
   display: flex;
   flex: 2;
-  width: 100%;
+  width: 79vw;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.map-container:hov {
+  display: flex;
+  flex: 2;
+  width: 79vw;
   flex-direction: column;
   align-content: space-between;
   justify-content: center;
@@ -185,26 +234,88 @@ label {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+#title-map{
+  color: black;
+  font-weight: bold;
+}
+#origen{
+  background-color: #f8f9fa;
+  border:1px rgba(0, 0, 0, 0.1) solid;
+  height: 3vh;
+}
+#destino{
+  height: 3vh;
+   background-color: #f8f9fa;
+  border:1px rgba(0, 0, 0, 0.1) solid;
+}
 .controls {
+  position: absolute;
+  top: 50vh;
+  left: 10vw;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 4vh;
   padding: 1vh;
-  height: 5vh;
+  height: 25vh;
+  border-radius: 5%;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+/* Borde animado con pseudo-elemento */
+.controls::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  border-radius: 5%;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 400%;
+  animation: borderRGB 5s linear infinite;
+}
+
+/* Fondo del contenedor para que el borde resalte */
+.controls::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: #ddd;
+  z-index: -1;
+  border-radius: 5%;
+}
+
+@keyframes borderRGB {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .inputMap {
   margin: 1vh;
   max-width: 50vw;
   min-width: 20vw;
+  color: black;
 }
 
 .form-container {
   display: flex;
+  align-items: center;
   flex: 1;
-  min-width: 250px;
+  width: 100%;
   justify-content: center;
 }
 
@@ -216,7 +327,7 @@ label {
   background: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 50%;
+  width: 20%;
   justify-content: center;
 }
 

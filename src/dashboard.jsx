@@ -21,23 +21,31 @@ const dashboard = () => {
         <>
             <div className="main-container">
                 <div className='info-container'>
+
                     {userData && (
                         <div className='info-user'>
 
-                            <div><img
-                                src={userData.photoURL}
-                                alt="Foto de perfil"
-                                width="100"
-                                style={{ borderRadius: "50%" }}
-                            /></div>
-                            <div><p>Bienvenido {userData.displayName}</p>
 
+                            <div id='info-user--name'><p>Bienvenido {userData.displayName}</p>
+                                <div className='button-info'>
+                                    <button id='options' >Inicio</button>
+                                    <button id='options'>Favoritos</button>
+                                    <button id='options'>Mi cuenta</button>
+                                </div>
                                 <button
                                     onClick={handleOnClick}
                                     className="logout-btn"
                                 >
                                     Cerrar sesión
-                                </button></div>
+                                </button>
+
+                                <img
+                                src={userData.photoURL}
+                                alt="Foto de perfil"
+                                width="100"
+                                style={{ borderRadius: "50%" }}
+                            />
+                                </div>
                         </div>
 
                     )}
@@ -53,12 +61,13 @@ const dashboard = () => {
                     <div className="form-container">
                         <div className="form-solicitud">
                             <select id="tipo-carga">
-                                <option value="muebles">Tipo de carga - Muebles</option>
+                                <option value="muebles">-- Selecciona un tipo de carga --</option>
+                                <option value="muebles">Muebles</option>
                                 <option value="paquetes">Paquetes pequeños</option>
                                 <option value="herramientas">Herramientas</option>
                             </select>
                             <button className="button" id="solicitar-btn">
-                                Solicitar Servicio ($15,000 COP)
+                                Solicitar Servicio
                             </button>
                         </div>
                     </div>

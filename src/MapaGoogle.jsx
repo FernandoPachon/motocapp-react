@@ -109,13 +109,13 @@ const MapaGoogle = () => {
 
     Promise.all([
       new Promise((resolve) =>
-        geocoder.geocode({ address: origen }, (results, status) => {
+        geocoder.geocode({ address: `${origen}, Aguazul, Casanare, Colombia`}, (results, status) => {
           if (status === 'OK') resolve(results[0].geometry.location);
           else resolve(null);
         })
       ),
       new Promise((resolve) =>
-        geocoder.geocode({ address: destino }, (results, status) => {
+        geocoder.geocode({ address: `${destino}, Aguazul, Casanare, Colombia` }, (results, status) => {
           if (status === 'OK') resolve(results[0].geometry.location);
           else resolve(null);
         })

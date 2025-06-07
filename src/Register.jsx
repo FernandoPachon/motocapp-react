@@ -20,7 +20,7 @@ const Register = () => {
 
     return (
         <>
-            <div className="main-container">
+            <div className="main-container--register">
                 <div className='main-register'>
                     <div className="container-logo">
                         <img src="src\assets\LogoMotocarro.png" alt="" width="80%" />

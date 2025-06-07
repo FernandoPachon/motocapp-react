@@ -20,7 +20,7 @@ const Register = () => {
 
     return (
         <>
-            <div className="main-container">
+            <div className="main-container--register">
                 <div className='main-register'>
                     <div className="container-logo">
                         <img src="src\assets\LogoMotocarro.png" alt="" width="80%" />
@@ -36,13 +36,13 @@ const Register = () => {
                         <div>
                             <form action="" className="input-form--container">
                                 <label htmlFor="">
-                                    <input placeholder="Tu nombre" type="text" id="input-login" />
+                                    <input placeholder="Tu nombre" type="text" id="input-login" className='name' required/>
                                 </label>
                                 <label htmlFor="">
-                                    <input placeholder="Tu email" type="email" id="input-login" />
+                                    <input placeholder="Tu email" type="email" id="input-login" className='email' required/>
                                 </label>
                                 <label htmlFor="">
-                                    <input placeholder="crea una contraseña" type="password" id="input-login" />
+                                    <input placeholder="crea una contraseña" type="password" id="input-login" className='password' required />
                                 </label>
                                 <label htmlFor="">
                                     <input type="checkbox" id="checkbox" />

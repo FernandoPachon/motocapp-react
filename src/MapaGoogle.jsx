@@ -7,6 +7,7 @@ const MapaGoogle = () => {
   const mapRef = useRef(null);
   const origenRef = useRef(null);
   const destinoRef = useRef(null);
+  const [rutaCalculada, setRutaCalculada] = useState(false);
 
   // Cargar el script de Google Maps
   useEffect(() => {
@@ -109,13 +110,13 @@ const MapaGoogle = () => {
 
     Promise.all([
       new Promise((resolve) =>
-        geocoder.geocode({ address: origen }, (results, status) => {
+        geocoder.geocode({ address: `${origen}, Aguazul, Casanare, Colombia` }, (results, status) => {
           if (status === 'OK') resolve(results[0].geometry.location);
           else resolve(null);
         })
       ),
       new Promise((resolve) =>
-        geocoder.geocode({ address: destino }, (results, status) => {
+        geocoder.geocode({ address: `${destino}, Aguazul, Casanare, Colombia` }, (results, status) => {
           if (status === 'OK') resolve(results[0].geometry.location);
           else resolve(null);
         })
@@ -134,14 +135,23 @@ const MapaGoogle = () => {
         (response, status) => {
           if (status === 'OK') {
             directionsRenderer.setDirections(response);
-            alert('Ruta calculada correctamente!');
+            setRutaCalculada(true); // ✅ Activamos el cambio de botón
           } else {
             alert('Error al calcular la ruta: ' + status);
           }
         }
       );
+      
     });
+    
+
   };
+  const resetearRuta = () => {
+      directionsRenderer.set('directions', null); // Borra la ruta del mapa
+      origenRef.current.value = '';
+      destinoRef.current.value = '';
+      setRutaCalculada(false); // ✅ Volvemos al estado original
+    };
 
   return (
     <div className='main-map'>
@@ -150,6 +160,7 @@ const MapaGoogle = () => {
         <div ref={mapRef} id="cliente-map" />
 
         <div className="controls">
+          <p id='title-map'>A donde necesitas tu MotoCapp</p>
           <input
             ref={origenRef}
             type="text"
@@ -164,7 +175,10 @@ const MapaGoogle = () => {
             id="destino"
             className='inputMap'
           />
-          <button onClick={calcularRuta}>Calcular Ruta</button>
+          <button onClick={rutaCalculada ? resetearRuta  : calcularRuta}>
+            {rutaCalculada ? 'Restablecer Ruta' : 'Calcular Ruta'}
+          </button>
+
         </div>
       </div>
     </div>

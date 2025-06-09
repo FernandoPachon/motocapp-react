@@ -1,12 +1,18 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./App.css";
 import MapaGoogle from './MapaGoogle';
+import Acount from './Acount';
 
 const dashboard = () => {
+    const [showAcount, setShowAcount] = useState(false);
     const navigate = useNavigate(); // 🚀 Hook para redirigir
     const userData = JSON.parse(sessionStorage.getItem('user'));
     console.log(userData.displayName);
+    const hanbleAcount=()=>{
+        console.log("click en cuenta");
+        setShowAcount(true)
+    }
     const handleOnClick = () => {
         console.log("click en desconectar");
         sessionStorage.removeItem('user')
@@ -32,7 +38,7 @@ const dashboard = () => {
                                 <div className='button-info'>
                                     <button id='options' >Inicio</button>
                                     <button id='options'>Favoritos</button>
-                                    <button id='options'>Mi cuenta</button>
+                                    <button onClick={hanbleAcount} id='options'>Mi cuenta</button>
                                 </div>
                                 <button
                                     onClick={handleOnClick}
@@ -74,6 +80,7 @@ const dashboard = () => {
                         </div>
                     </div>
                 </div>
+                <Acount isOpen={showAcount} onClose={() => setShowAcount(false)}/>
             </div>
             <p>Creado por Fernando Pachon</p>
         </>

@@ -1,9 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import "./App.css";
 import PopupGoogle from './PopupGoogle';
+import TermsModal from './TermsModal';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const [showTerms, setShowTerms] = useState(false);
     const btnEvent = () => {
         alert("Esta funcion esta desabilitada, ingresa con google")
     }
@@ -36,18 +39,20 @@ const Register = () => {
                         <div>
                             <form action="" className="input-form--container">
                                 <label htmlFor="">
-                                    <input placeholder="Tu nombre" type="text" id="input-login" className='name' required/>
+                                    <input placeholder="Tu nombre" type="text" id="input-login" className='name' required />
                                 </label>
                                 <label htmlFor="">
-                                    <input placeholder="Tu email" type="email" id="input-login" className='email' required/>
+                                    <input placeholder="Tu email" type="email" id="input-login" className='email' required />
                                 </label>
                                 <label htmlFor="">
                                     <input placeholder="crea una contraseña" type="password" id="input-login" className='password' required />
                                 </label>
                                 <label htmlFor="">
                                     <input type="checkbox" id="checkbox" />
-                                    Acepto los
-                                    <a href=""> terminos y condiciones</a>
+                                    Acepto los_
+                                    <span className="terms-link" onClick={() => setShowTerms(true)} style={{ color: 'blue', cursor: 'pointer' }}>
+                                        términos y condiciones
+                                    </span>
                                 </label>
                                 <button id="button" onClick={btnEvent}>Registrarse</button>
 
@@ -59,8 +64,9 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-
+                <TermsModal isOpen={showTerms} onClose={() => setShowTerms(false)} />
             </div >
+
             <p>Creado por Fernando Pachon</p>
         </>
     )

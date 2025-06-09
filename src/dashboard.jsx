@@ -26,7 +26,9 @@ const dashboard = () => {
                         <div className='info-user'>
 
 
-                            <div id='info-user--name'><p>Bienvenido {userData.displayName}</p>
+                            <div id='info-user--name'>
+                                <p>Bienvenido</p>
+                                <p>{userData.displayName}</p>
                                 <div className='button-info'>
                                     <button id='options' >Inicio</button>
                                     <button id='options'>Favoritos</button>
@@ -58,7 +60,7 @@ const dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="form-container">
+                    <div className="carga-container">
                         <div className="form-solicitud">
                             <select id="tipo-carga">
                                 <option value="muebles">-- Selecciona un tipo de carga --</option>

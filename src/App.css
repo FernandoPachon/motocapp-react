@@ -2,17 +2,12 @@ body {
   background-color: #dc7633;
   display: flex;
   justify-content: center;
-  background-image: url("./assets/fondo1.png");
+  background-image: url("./assets/corp1.jpg");
   background-size: contain;
 }
 
 #root {
-  max-width: 200vw;
-  text-align: center;
-  margin-top: 15vh;
-  margin-bottom: 10vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  
 }
 
 .logo {
@@ -69,7 +64,7 @@ body {
 
 
 .main-container {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.603);
   border-radius: 2%;
   display: flex;
   flex-direction: column;
@@ -190,22 +185,28 @@ label {
   margin: auto;
   gap: 2px;
   padding: auto;
-  width: 200vw;
   align-items: center;
+  justify-content: space-between;
 }
-
+.space{
+  width: 30%;
+}
+#favorite-logo{
+  width: 5vh;
+}
 .button-info {
   display: flex;
   flex-direction: row;
   width: 50%;
 }
-
+.img-close{
+  display: flex;
+  flex-direction: column;
+}
 .info-user {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 10px;
-  width: 50%;
+  width:100%;
 }
 
 #options {

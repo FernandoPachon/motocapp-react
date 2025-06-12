@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./App.css";
 import MapaGoogle from './MapaGoogle';
+import Acount from './Acount';
 
 const dashboard = () => {
+    const [showAcount, setShowAcount] = useState(false);
     const navigate = useNavigate(); // 🚀 Hook para redirigir
     const userData = JSON.parse(sessionStorage.getItem('user'));
     console.log(userData.displayName);
+    const hanbleAcount = () => {
+        console.log("click en cuenta");
+        setShowAcount(true)
+    }
     const handleOnClick = () => {
         console.log("click en desconectar");
         sessionStorage.removeItem('user')
@@ -24,28 +30,27 @@ const dashboard = () => {
 
                     {userData && (
                         <div className='info-user'>
+                            <div className='space'></div>
+                            <div className='button-info'>
+                                <button id='options' >Inicio</button>
+                                <button id='options'><img id='favorite-logo' src="src\assets\favorite.png" alt="" /></button>
+                                
+                            </div>
 
-
-                            <div id='info-user--name'><p>Bienvenido {userData.displayName}</p>
-                                <div className='button-info'>
-                                    <button id='options' >Inicio</button>
-                                    <button id='options'>Favoritos</button>
-                                    <button id='options'>Mi cuenta</button>
+                            <div id='info-user--name, options' onClick={hanbleAcount}>
+                                <div className='img-close'>
+                                    <img
+                                        src={userData.photoURL}
+                                        alt="Foto de perfil"
+                                        width="100"
+                                        style={{ borderRadius: "50%" }}
+                                    />
+                                    
                                 </div>
-                                <button
-                                    onClick={handleOnClick}
-                                    className="logout-btn"
-                                >
-                                    Cerrar sesión
-                                </button>
 
-                                <img
-                                src={userData.photoURL}
-                                alt="Foto de perfil"
-                                width="100"
-                                style={{ borderRadius: "50%" }}
-                            />
-                                </div>
+
+
+                            </div>
                         </div>
 
                     )}
@@ -58,7 +63,7 @@ const dashboard = () => {
                         </div>
                     </div>
 
-                    <div className="form-container">
+                    <div className="carga-container">
                         <div className="form-solicitud">
                             <select id="tipo-carga">
                                 <option value="muebles">-- Selecciona un tipo de carga --</option>
@@ -72,6 +77,7 @@ const dashboard = () => {
                         </div>
                     </div>
                 </div>
+                <Acount isOpen={showAcount} onClose={() => setShowAcount(false)} />
             </div>
             <p>Creado por Fernando Pachon</p>
         </>
